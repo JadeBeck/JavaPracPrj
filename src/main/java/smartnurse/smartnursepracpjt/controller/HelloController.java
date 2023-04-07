@@ -32,7 +32,7 @@ public class HelloController {
     public Hello helloApi(@RequestParam("name") String name) {
         Hello hello = new Hello();
         hello.setName(name);  //커맨드 쉬프트 엔터 ! 인텔리제이 자동완성
-        return hello;  //data가 문자가 아니라 객체임... 브라우저에 그냥 바로 내릴 수 없음. 그럼? 객체가 오면!! JSON 방식으로 바꿔 내림.
+        return hello;  //data가 문자가 아니라 객체임... 브라우저에 그냥 바로 내릴 수 없음. 그럼? @ResponsdBody 달고 객체가 오면!! JSON 방식으로 바꿔 내림(by.JsonConverter) 만약 @ResponsdBody 달고 문자가 옴? 그럼 그냥 문자 내림(by.StringConverter)
     }
 
     static class Hello {
