@@ -32,24 +32,23 @@ public class MemberController {
 
     @GetMapping("/members/new")
     public String createForm() {
-        return "members/createMemberForm";
+        return "members/createMemberForm";  //이 파일 열어보면 위에 <form action="/members/new" method="post">라고 있는데, 이름 적고 등록 누르면 저 action url로 post 방식으로 넘어온다는 것. 즉 밑의 @PostMapping으로 넘어온다~!~! 그 후 create라는 메써드가 호출된다.
     }
 
     @PostMapping("/members/new")
-    public String create(MemberForm form) {
+    public String create(MemberForm form) {  //create라는 메써드가 호출되면, 값이 들어온다. MemberForm 파일 열어보면 private String name; 있는데 이 name에 내가 적은 name이 들어오는 것(setName을 통해서!! => 스프링이 setName라는 세터 호출해서 이름 등록해준당. 왜? private String name.. 프라이빗이라서 막 접근 못하고.. 세터 호출함.. 세터...세터...........🥺)
         Member member = new Member();
-        member.setName(form.getName());
+        member.setName(form.getName());  //위에서 setName으로 이름 등록했고, 여기서는 form에서 getName으로 이름 꺼내줌
 
         memberService.join(member);  //쪼인 로직 타고 들어가보셈. 이전에 미리 만들었던거임.
 
         return "redirect:/";
-
     }
 
-    @GetMapping(value = "/members")
+    @GetMapping("/members")
     public String list(Model model) {
         List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
+        model.addAttribute("members", members);  //Members List 자체를 그냥 model에다가 담아서 뷰에 넘김
         return "members/memberList";
     }
 }
