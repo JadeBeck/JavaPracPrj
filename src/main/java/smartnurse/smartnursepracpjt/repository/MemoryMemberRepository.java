@@ -4,6 +4,7 @@ import smartnurse.smartnursepracpjt.domain.Member;
 
 import java.util.*;
 
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
     //MemberRepository까지 적고 옵션+엔터로 메서드 불러옴
     //⭐️🌙🍋interface로 만든 MemberRepository는 '틀'일 뿐. 구현체는 여기(클래스)다.

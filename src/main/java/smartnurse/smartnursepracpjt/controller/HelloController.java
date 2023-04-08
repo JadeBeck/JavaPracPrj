@@ -5,9 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@Controller  //컨트롤 애노테이션 붙이고 MemberControlelr 클래스 칸을 만들면 ➡ 스프링 컨테이너가 처음에 뜰 때(만들어질 때) 스프링이 MemberController 객체를 생성해서 넣어두고 직접 관리를 함.
+//➡'스프링 컨테이너에서 스프링 빈이 관리된다'고 표현함
+
 public class HelloController {
     @GetMapping("hello")  // '/hello'로 들어오면 아래의 메써드 호출함.
     public String hello(Model model) {
