@@ -2,13 +2,21 @@ package smartnurse.smartnursepracpjt;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import smartnurse.smartnursepracpjt.repository.JdbcMemberRepository;
 import smartnurse.smartnursepracpjt.repository.MemberRepository;
-import smartnurse.smartnursepracpjt.repository.MemoryMemberRepository;
 import smartnurse.smartnursepracpjt.service.MemberService;
+
+import javax.sql.DataSource;
 
 @Configuration  //이거는 직접 스프링 빈 등록해주는 과정. 이렇게 해두면 스프링이 뜰 때 @Configuration 읽고 @Bean 캐치해서 "hum Spring Bean에 등록하란거균"하고 @Bean 밑의 로직을 호출/등록해줌.
 //이렇게 직접 등록하면, 스프링이 뜰 때 코드 쫙 훑으면서 memberService()랑 memberRepository() 둘 다 컨테이너에 등록하고, 등록한 애는 MemberService에 넣어줌...
 public class SpringConfig {
+
+    private final DataSource dataSource;
+
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public MemberService memberService() {
@@ -18,6 +26,7 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+        //return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
     }
 }
