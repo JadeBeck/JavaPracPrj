@@ -2,7 +2,7 @@ package smartnurse.smartnursepracpjt;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import smartnurse.smartnursepracpjt.repository.JdbcMemberRepository;
+import smartnurse.smartnursepracpjt.repository.JdbcTemplateMemberRepository;
 import smartnurse.smartnursepracpjt.repository.MemberRepository;
 import smartnurse.smartnursepracpjt.service.MemberService;
 
@@ -27,6 +27,7 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
         //return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
