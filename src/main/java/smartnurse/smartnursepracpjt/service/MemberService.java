@@ -1,11 +1,13 @@
 package smartnurse.smartnursepracpjt.service;
 
+import org.springframework.transaction.annotation.Transactional;
 import smartnurse.smartnursepracpjt.domain.Member;
 import smartnurse.smartnursepracpjt.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 //@Service  //상황 시뮬.. 1)스프링 컨테이너가 뜬다 ➡ 2)코드 쫙 훑는데 @Service가 보인다 ➡ 3)"오호랑 써비쓰쟈나? 일단 컨테이너 등록 ㄱㄱ" ➡ 4)"밑에 생성자(private final~) 호출하쟝. 근데 @Autowired가 있쟈나?!" ➡ 5)"구로면,, 아핫 코드 보니까 MemberRepository가 필요하구남" ➡ 6)스프링 컨테이너에 들어있는 MemberRepository를 빼서 촥 넣어줌~!(지금 구현체는 MemoryMemberRepository니까 얘를 넣어줌)(이게 DI)
 public class MemberService {  //테스트 쉽게 만들기? 커맨드 쉬프트 t
 

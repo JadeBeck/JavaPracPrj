@@ -18,10 +18,11 @@ class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
+    //@Commit => 커밋 애노테이션 선언하면 Transactional 안되고 디비에 실제로 꽂히도록 테스트 가능
     void 회원_가입() {
         //given ➡이런 상황이 주어졌어
         Member member = new Member();
-        member.setName("Renna");
+        member.setName("Lea");
 
         //when ➡이걸 실행했을 때
         Long saveId = memberService.join(member);  //멤버서비스의 조인을 검증할거야(어떻게? member 객체 넣어서)
