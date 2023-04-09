@@ -25,8 +25,9 @@ public class MemberController {
     //위의 과정처럼 애노테이션을 붙여주는걸 '스프링 컨테이너에 스프링 빈으로 등록한다'라고 합니동. 글고!!!! 이게 바로 Dependency Injection⭐️🌙💛🍋⭐️
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("memverService =" + memberService.getClass()); //찍으면 콘솔에 memverService =class smartnurse.smartnursepracpjt.service.MemberService$$EnhancerBySpringCGLIB$$2ff3c787 올라옴. CGLIB가.. 멤버써비스를 갖고 복제해서 코드를 조작하는 기술.. AOP 적용하면 이런 기술이 쓰임(프록시 memberService를 만들어서 AOP는 걔를 통해 다 실행이 되고 joinPoint.proceed() 하면 그때서야 진짜 memberService가 호출됨)
     }
-    //이렇게 하면 SpringConfig에서 내가 직접 등록한 memberService를 넣어줌
+    //이렇게 하면 MemberController가 올라올때, SpringConfig에서 내가 직접 등록한 memberService를 넣어줌
 
     private final MemberService memberService; // 뒤에 = new MemberService();로 memberService 객체를 새로 만드는게 아니라(memberService class 자체가 별 로직 없는데 .. 여러개 만들 필요가 없음) 이렇게 스프링컨테이너에 등록(딱 하나만 등록됨)해놓고 꺼내씀. 글고 생성자 만듬(~this.memberService = memberService)
 

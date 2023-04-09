@@ -11,5 +11,5 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Lon
     //이렇게 등록하면 SpringConfig에서 인젝션 받을 수 있음(DI)
 
     @Override
-    Optional<Member> findByName(String name);  //JPQL select m from Memberver m where.mname = ?
+    Optional<Member> findByName(String name);  //JPQL select m from Memberver m where.name = ?
 }

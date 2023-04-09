@@ -48,4 +48,9 @@ public class SpringConfig {
         //return new JdbcTemplateMemberRepository(dataSource);
         //return new JpaMemberRepository(em);
     }*/
+
+    /*@Bean  //🍋AOP는 이렇게 등록해줘서 한눈에 캐치되도록 해주는게 좋긔(필수는 앙니긔)
+    public TimeTraceAOP timeTraceAOP() {
+        return new TimeTraceAOP();
+    }*/
 }

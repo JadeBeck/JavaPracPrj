@@ -30,16 +30,15 @@ public class MemberService {  //테스트 쉽게 만들기? 커맨드 쉬프트 
             throw new IllegalStateException("동명의 회원 이미 존재함");
         });*/
 
-        //동명의 회원은 불가
-        validateDupllicatedName(member);
-        /* 원래 아래처럼 코드가 줄줄이 있었음. 글서 이걸 method로 아랫부분에다가 따로 선언하고 그걸 불러다 씀.
-        memberRepository.findByName(member.getName())  //findByName 해바. 근데 이 메쏘드 자체가 이미 Optional로 생성됐거덩? 그니까 그냥 여기다가 바로 ifPresent 써부려
+            //동명의 회원은 불가
+            validateDupllicatedName(member);
+            /* 원래 아래처럼 코드가 줄줄이 있었음. 글서 이걸 method로 아랫부분에다가 따로 선언하고 그걸 불러다 씀.
+             memberRepository.findByName(member.getName())  //findByName 해바. 근데 이 메쏘드 자체가 이미 Optional로 생성됐거덩? 그니까 그냥 여기다가 바로 ifPresent 써부려
                 .ifPresent(m -> {
                     throw new IllegalStateException("동명의 회원 이미 존재함");
                 });*/
-
-        memberRepository.save(member);
-        return member.getId();
+            memberRepository.save(member);
+            return member.getId();
     }
 
     private void validateDupllicatedName(Member member) {
@@ -51,10 +50,10 @@ public class MemberService {  //테스트 쉽게 만들기? 커맨드 쉬프트 
     }
 
     /**
-     * 전체 회원 조회
+     * 전체 회원 조회긔
      */
     public List<Member> findMembers() {
-        return memberRepository.findAll();  //findAll 만들때 list로 만들었슘. 글서 걍 단순 return 함 댐
+            return memberRepository.findAll();  //findAll 만들때 list로 만들었슘. 글서 걍 단순 return 함 댐
     }
 
     public Optional<Member> findOne(Long memberId) {
